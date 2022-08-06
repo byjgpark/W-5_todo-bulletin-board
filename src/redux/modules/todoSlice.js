@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios"; // axios import 합니다.
+import axios from "axios";
 
 export const __getTodos = createAsyncThunk(
   "todos/getTodos",
