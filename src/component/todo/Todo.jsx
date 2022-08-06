@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Todo(props) {
   const navigate = useNavigate();
+  console.log("text");
   return (
     <>
       <StCard
