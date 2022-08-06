@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Comment from "../comment/Comment"
 
 export default function Detail() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ export default function Detail() {
           <BtnBox style={{ marginRight: "30px" }}>수정하기</BtnBox>
         </div>
       </Box2>
+      <Comment></Comment>
     </>
   );
 }
