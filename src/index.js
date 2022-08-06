@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/config/configStore";
+import Detail from "./component/detail/Detail";
 
 // css
 import "./index.css";
@@ -19,7 +20,8 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
-        <Route path="/form" element={<Form />} />
+        <Route path="/form" element={<Form/>}/>
+        <Route path="/detail" element={<Detail/>}/>
         <Route path="/" element={<App />} />
       </Routes>
     </Provider>
