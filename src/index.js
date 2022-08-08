@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/config/configStore";
-import Detail from "./component/detail/Detail";
 
 // css
 import "./index.css";
@@ -11,6 +10,9 @@ import "./index.css";
 // Component
 import App from "./App";
 import Form from "./component/form/Form";
+import Detail from "./component/detail/Detail";
+import TodoList from "./component/todoList/TodoList";
+import Comment from "./component/comment/Comment";
 
 // Route
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -21,8 +23,10 @@ root.render(
     <Provider store={store}>
       <Routes>
         <Route path="/form" element={<Form/>}/>
-        <Route path="/detail" element={<Detail/>}/>
+        <Route path="/detail/:id" element={<Detail/>}/>
+        <Route path="/todoList" element={<TodoList/>}/>
         <Route path="/" element={<App />} />
+        <Route path="/comment" element={<Comment />}/>
       </Routes>
     </Provider>
   </BrowserRouter>

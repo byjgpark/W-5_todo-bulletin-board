@@ -5,8 +5,8 @@ export const __getTodos = createAsyncThunk(
   "todos/getTodos",
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get("http://localhost:3001/todos");
-      return thunkAPI.fulfillWithValue(data.data);
+      const {data} = await axios.get("http://localhost:5001/todos");
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -14,9 +14,11 @@ export const __getTodos = createAsyncThunk(
 );
 
 const initialState = {
-  todos: [{ id: 2, title: "hello world!" }],
-  isLoading: false,
-  error: null,
+  todos: {
+    data: [],
+    isLoading: false,
+    error: null,
+  },
 };
 
 export const todosSlice = createSlice({
@@ -26,13 +28,19 @@ export const todosSlice = createSlice({
   extraReducers: {
     [__getTodos.pending]: (state) => {
       state.isLoading = true;
+      // console.log("This is pending")
     },
     [__getTodos.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.todos = { ...state.todos };
+      // console.log(state.todos)
+      // console.log("This is fulfilled")
+      // console.log("this is action " + JSON.stringify(action.payload))
+      // console.log("checking here ")
+      state.todos.data = action.payload;
     },
     [__getTodos.rejected]: (state, action) => {
       state.isLoading = false;
+      // console.log("what it is")
       state.error = action.payload;
     },
   },

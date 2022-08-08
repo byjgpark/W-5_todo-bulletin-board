@@ -23,11 +23,11 @@ export default function Detail() {
   const [todo] = useState(initialState);
   const { id } = useParams();
 
-  console.log(todo);
-  console.log(id);
+  // console.log(todo);
+  // console.log(id);
 
   let copy = todo.find((x) => x.id === Number(id));
-  console.log(copy);
+  // console.log(copy);
 
   return (
     <>
