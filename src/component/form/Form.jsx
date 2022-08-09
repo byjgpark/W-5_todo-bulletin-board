@@ -107,13 +107,15 @@ function Form() {
     axios.post("http://localhost:3001/form", post);
   };
 
+  console.log(post);
+
   return (
     <div>
       <form
         onSubmit={(e) => {
           // 👇 submit했을 때 브라우저의 새로고침을 방지합니다.
           e.preventDefault();
-          // onSubmitHandler(post);
+          onSubmitHandler(post);
         }}
       >
         <h1>닉네임</h1>
@@ -152,7 +154,7 @@ function Form() {
           }}
           placeholder="내용을 입력해주세요. (10자 이내)"
         ></input>
-        <button onClick={() => onSubmitHandler}>추가하기</button>
+        <button>추가하기</button>
       </form>
     </div>
   );
