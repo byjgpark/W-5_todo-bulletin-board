@@ -12,7 +12,7 @@ import { configureStore } from "@reduxjs/toolkit";
 //  */
 // const store = configureStore({
 //   reducer: { todo: todo },
-import todos from "../modules/todoSlice";
+import todos from "../modules/todosSlice";
 import comments from "../modules/commentsSlice";
 
 const store = configureStore({
