@@ -9,6 +9,7 @@ import {
   __updateComment,
 } from "../../redux/modules/commentsSlice";
 import { useParams } from "react-router-dom";
+
 import "./comment.css";
 
 function Comment() {
@@ -81,6 +82,7 @@ function Comment() {
             type="text"
             placeholder="이름 (5자 이내)"
             className="iskVDh"
+
             value={userID}
             onChange={(e) => {
               // Getting User title input
@@ -93,6 +95,7 @@ function Comment() {
           type="text"
           placeholder="댓글을 추가하세요. (100자 이내)"
           className="iskVDh"
+
           value={cmtBody}
           onChange={(e) => {
             // Getting User title input
@@ -197,6 +200,7 @@ function Comment() {
             }
           })} */}
       </div>
+        <button type="submit"></button>
     </div>
   );
 }

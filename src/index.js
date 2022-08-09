@@ -22,11 +22,11 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
-        <Route path="/form" element={<Form/>}/>
-        <Route path="/detail/:id" element={<Detail/>}/>
-        <Route path="/todoList" element={<TodoList/>}/>
-        <Route path="/" element={<App />} />
         <Route path="/comment" element={<Comment />}/>
+        <Route path="/todolist" element={<TodoList />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route path="/form" element={<Form />} />
+        <Route path="/" element={<TodoList />} />
       </Routes>
     </Provider>
   </BrowserRouter>

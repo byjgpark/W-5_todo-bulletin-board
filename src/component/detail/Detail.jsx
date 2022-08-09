@@ -1,49 +1,80 @@
-import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import Comment from "../comment/Comment"
+import Comment from "../comment/Comment";
+import { useEffect, useState } from "react";
+import {
+  __getTodosThunk,
+  __updateTodoThunk,
+} from "../../redux/modules/todosSlice";
 
 export default function Detail() {
   const navigate = useNavigate();
 
-  const initialState = [
-    {
-      id: 1,
-      title: "ㅎㅇ",
-      body: "ㅎㅇ",
-    },
-    {
-      id: 2,
-      title: "ㅎㅇ",
-      body: "ㅎㅇ",
-    },
-    {
-      id: 3,
-      title: "ㅎㅇ",
-      body: "ㅎㅇ",
-    }
-  ];
 
-  const [todo] = useState(initialState);
+  const dispatch = useDispatch();
+  let [todo] = useState();
+  let [editBody, setEditBody] = useState("");
+  const [edit, setEdit] = useState(false);
+  const { todos } = useSelector((state) => state.todos);
   const { id } = useParams();
 
-  // console.log(todo);
-  // console.log(id);
+  todo = todos.find((x) => x.id === Number(id));
 
-  let copy = todo.find((x) => x.id === Number(id));
-  // console.log("checking detail copy value " + JSON.stringify(copy));
+  useEffect(() => {
+    dispatch(__getTodosThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setEditBody(todo?.body);
+  }, [todo]);
+
+  const onEditHandler = () => {
+    setEdit(true);
+  };
+
+  const onSubmitHandler = () => {
+    dispatch(
+      __updateTodoThunk({
+        ...todo,
+        body: editBody,
+      })
+    );
+    setEditBody(editBody);
+    setEdit(false);
+  };
+
+  const onChangeHandler = (event) => {
+    setEditBody(event.target.value);
+  };
 
   return (
     <>
       <Box2>
         <Box3>
-          <div>id : {copy.id}</div>
-          <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>
+          <div>id : {todo?.id}</div>
+          {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
         </Box3>
-        <h1 style={{ marginLeft: "30px" }}>{copy.title}</h1>
-        <main style={{ marginLeft: "30px" }}>{copy.body}</main>
+        <h1 style={{ marginLeft: "30px" }}>{todo?.title}</h1>
+
+        {edit ? (
+          <>
+            <Textarea value={editBody} onChange={onChangeHandler} />
+          </>
+        ) : (
+          <main style={{ marginLeft: "30px" }}>{todo?.body}</main>
+        )}
+
         <div style={{ float: "right" }}>
-          <BtnBox style={{ marginRight: "30px" }}>수정하기</BtnBox>
+          {edit ? (
+            <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+              저장하기
+            </BtnBox>
+          ) : (
+            <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
+              수정하기
+            </BtnBox>
+          )}
         </div>
       </Box2>
       <Comment></Comment>
@@ -71,4 +102,11 @@ const BtnBox = styled.button`
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   cursor: pointer;
+`;
+
+const Textarea = styled.textarea`
+  width: 70%;
+  border: 1px solid #eee;
+  padding: 12px;
+  font-size: 14px;
 `;

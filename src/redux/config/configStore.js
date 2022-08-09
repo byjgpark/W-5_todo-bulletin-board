@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import todos from "../modules/todoSlice";
 import comments from "../modules/commentsSlice"
 
+
 const store = configureStore({
   reducer: {
     todos,
