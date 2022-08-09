@@ -13,14 +13,18 @@ import Form from "./component/form/Form";
 
 // Route
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Detail from "./component/detail/Detail";
+import TodoList from "./component/todoList/TodoList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
+        <Route path="/todolist" element={<TodoList />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/form" element={<Form />} />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<TodoList />} />
       </Routes>
     </Provider>
   </BrowserRouter>

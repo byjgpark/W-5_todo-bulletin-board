@@ -1,8 +1,17 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { __deleteTodoThunk } from "../../redux/modules/todosSlice";
 
 export default function Todo(props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onClickHandler = (event) => {
+    event.stopPropagation();
+    dispatch(__deleteTodoThunk(props.todo.id));
+  };
+
   return (
     <>
       <StCard
@@ -10,8 +19,10 @@ export default function Todo(props) {
           navigate(`/detail/${props.todo.id}`);
         }}
       >
+        <div>{props.todo.id}</div>
         <div>{props.todo.title}</div>
         <div>{props.todo.body}</div>
+        <button onClick={onClickHandler}>삭제하기</button>
       </StCard>
     </>
   );

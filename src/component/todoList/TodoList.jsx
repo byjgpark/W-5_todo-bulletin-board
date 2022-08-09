@@ -1,30 +1,26 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { __getTodosThunk } from "../../redux/modules/todosSlice";
 import Todo from "../todo/Todo";
 
 export default function TodoList() {
-  const initialState = [
-    {
-      id: 1,
-      title: "ㅎㅇ",
-      body: "ㅎㅇ",
-    },
+  const dispatch = useDispatch();
 
-    {
-      id: 2,
-      title: "ㅎㅇ",
-      body: "ㅎㅇ",
-    },
-  ];
+  const { todos } = useSelector((state) => state.todos);
 
-  const [todo] = useState(initialState);
+  console.log(todos);
+
+  useEffect(() => {
+    dispatch(__getTodosThunk());
+  }, [dispatch]);
 
   return (
     <>
       <Container>내 할일</Container>
       <StContainer>
-        {todo.map((todos) => {
-          return <Todo todo={todos} key={todos.id} />;
+        {todos.map((todo) => {
+          return <Todo todo={todo} key={todo.id} />;
         })}
       </StContainer>
     </>
