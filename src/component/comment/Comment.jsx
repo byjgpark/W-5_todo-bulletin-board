@@ -13,7 +13,6 @@ import { useParams } from "react-router-dom";
 import "./comment.css";
 
 function Comment() {
-
   // Hook
   // const [isShow, setisShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
@@ -22,7 +21,7 @@ function Comment() {
   const [textEdit, setTextEdit] = useState("");
   const [editCmt, setEditCmt] = useState({
     id: "",
-    username: ""
+    username: "",
   });
 
   // console.log("This is " + editShow);
@@ -67,7 +66,7 @@ function Comment() {
 
   // const onUpdateBtnHandler = (cmt) => {
   //   console.log("checking" + JSON.stringify(cmt))
-   
+
   //   // setEditShow(true);
   // };
 
@@ -82,7 +81,6 @@ function Comment() {
             type="text"
             placeholder="이름 (5자 이내)"
             className="iskVDh"
-
             value={userID}
             onChange={(e) => {
               // Getting User title input
@@ -95,7 +93,6 @@ function Comment() {
           type="text"
           placeholder="댓글을 추가하세요. (100자 이내)"
           className="iskVDh"
-
           value={cmtBody}
           onChange={(e) => {
             // Getting User title input
@@ -112,8 +109,9 @@ function Comment() {
               return ( */}
         {/* { comments.comments.data[id] !== undefined &&
               comments.comments.data[id].comment.map((el) => el */}
-        {editShow === false
-          ? comments.commentsByTodoId.data.length !== 0 &&
+        {
+          editShow === false ? (
+            comments.commentsByTodoId.data.length !== 0 &&
             comments.commentsByTodoId.data.map((cmt) => {
               // console.log("checking here " + e)
               return (
@@ -144,63 +142,67 @@ function Comment() {
                 </div>
               );
             })
-          : 
-          // console.log('hello')
-          // comments.commentsByTodoId.data.map((cmt) => {
-              // return (
-                <div className="jOlBJN">
-                  <div className="cPgLdn">
-                    {/* <div>{e.username}</div> */}
-                    <input
-                      type="text"
-                      className="iskVDh"
-                      value={textEdit}
-                      onChange={(e) => {
-                        // Getting User title input
-                        setTextEdit(e.target.value);
-                      }}
-                    ></input>
-                  </div>
-                  <div className="jPiwpb">
-                    <button
-                      className="bPVoHM"
-                      onClick={() => {
-                        setEditShow(false);
-                      }}
-                    >
-                      취소하기
-                    </button>
-                    <button
-                      className="bPVoHM"
-                      onClick={()=> { 
-                        console.log("checking onCick " + JSON.stringify(comments.commentsByTodoId.data))
-                        // if(editShow === false){
-                      //   dispatch(
-                      //   __updateComment({
-                      //     id: comments.id,
-                      //     body: textEdit,
-                      //     username: comments.username,
-                      //     todoId: id,
-                      //   })
-                      // )
+          ) : (
+            // console.log('hello')
+            // comments.commentsByTodoId.data.map((cmt) => {
+            // return (
+            <div className="jOlBJN">
+              <div className="cPgLdn">
+                {/* <div>{e.username}</div> */}
+                <input
+                  type="text"
+                  className="iskVDh"
+                  value={textEdit}
+                  onChange={(e) => {
+                    // Getting User title input
+                    setTextEdit(e.target.value);
+                  }}
+                ></input>
+              </div>
+              <div className="jPiwpb">
+                <button
+                  className="bPVoHM"
+                  onClick={() => {
+                    setEditShow(false);
+                  }}
+                >
+                  취소하기
+                </button>
+                <button
+                  className="bPVoHM"
+                  onClick={() => {
+                    console.log(
+                      "checking onCick " +
+                        JSON.stringify(comments.commentsByTodoId.data)
+                    );
+                    // if(editShow === false){
+                    //   dispatch(
+                    //   __updateComment({
+                    //     id: comments.id,
+                    //     body: textEdit,
+                    //     username: comments.username,
+                    //     todoId: id,
+                    //   })
+                    // )
                     // }
-                      setEditShow(false);
-                      // console.log("check here" + editShow)
-                    }}
-                    >
-                      저장하기
-                    </button>
-                  </div>
-                </div>
-              // );
-            // })
-            }
+                    setEditShow(false);
+                    // console.log("check here" + editShow)
+                  }}
+                >
+                  저장하기
+                </button>
+              </div>
+            </div>
+          )
+          // );
+          // })
+        }
         {/* )} */}
         {/* );
             }
           })} */}
       </div>
-        <button type="submit"></button>
+      <button type="submit"></button>
     </div>
   );
 }

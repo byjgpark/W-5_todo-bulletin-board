@@ -1,5 +1,5 @@
 {
-  "todos": [
+  "form": [
     {
       "id": 1,
       "title": "두번째 제목",
@@ -40,7 +40,6 @@
       "username": "asd",
       "body": "asdasdasdasdasdasdasd",
       "id": 16
-
     }
   ]
 }
