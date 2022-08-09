@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import './comment.css';
-
+import "./comment.css";
 
 function Comment() {
   const [isShow, setisShow] = useState(false);
 
   return (
-   <div className="isKcvs">
+    <div className="isKcvs">
       <div className="SVavv">
         <div className="fBRIGy">눌러서 댓글내리기</div>
       </div>
       <form className="hPRjqN">
         <div className="cSGhKx">
-          <input type="text" placeholder="이름 (5자 이내)" required class="iskVDh"/>
+          <input
+            type="text"
+            placeholder="이름 (5자 이내)"
+            className="iskVDh"
+            required
+          />
         </div>
-        <input type="text" placeholder="댓글을 추가하세요. (100자 이내)" required class="iskVDh"/>
+        <input
+          type="text"
+          placeholder="댓글을 추가하세요. (100자 이내)"
+          className="iskVDh"
+          required
+        />
         <button type="submit"></button>
       </form>
-   </div>
+    </div>
   );
-};
+}
 
 export default Comment;
-
 
 // const [isUp, setIsUp] = useState(false);
 // return (
@@ -62,6 +70,3 @@ export default Comment;
 // justify-content: center;
 // padding: 17px;
 // `;
-
-
-

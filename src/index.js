@@ -24,7 +24,7 @@ root.render(
         <Route path="/todolist" element={<TodoList />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/form" element={<Form />} />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<TodoList />} />
       </Routes>
     </Provider>
   </BrowserRouter>
