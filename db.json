@@ -2,36 +2,44 @@
   "todos": [
     {
       "id": 1,
-      "title": "첫번째 제목",
-      "body": "첫번째 글",
-      "comment":{
-        "id" : 1,
-        "username": "soda",
-        "body": "it is good"
-      }
-    },
-
-    {
-      "id": 2,
       "title": "두번째 제목",
-      "body": "두번째 글",
-      "comment":{
-        "id" : 2,
-        "username": "test",
-        "body": "it is not good"
-      }
+      "body": "두번째 글"
     },
-
     {
       "id": 2,
       "title": "세번째 제목",
       "body": "세번째 글"
-      
+    },
+    {
+      "id": 3,
+      "title": "세번째 제목",
+      "body": "세번째 글"
     }
-
-
-
+  ],
+  "comments": [
+    {
+      "todoId": "2",
+      "username": "test 123",
+      "body": "test 123",
+      "id": 7
+    },
+    {
+      "todoId": "1",
+      "username": "asd",
+      "body": "asdasdasd",
+      "id": 14
+    },
+    {
+      "todoId": "1",
+      "username": "asd",
+      "body": "asdasdasdasdasdasdasd",
+      "id": 15
+    },
+    {
+      "todoId": "1",
+      "username": "asd",
+      "body": "asdasdasdasdasdasdasd",
+      "id": 16
+    }
   ]
 }
-
-

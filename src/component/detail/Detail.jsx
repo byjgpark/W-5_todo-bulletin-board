@@ -12,12 +12,16 @@ export default function Detail() {
       title: "ㅎㅇ",
       body: "ㅎㅇ",
     },
-
     {
       id: 2,
       title: "ㅎㅇ",
       body: "ㅎㅇ",
     },
+    {
+      id: 3,
+      title: "ㅎㅇ",
+      body: "ㅎㅇ",
+    }
   ];
 
   const [todo] = useState(initialState);
@@ -27,7 +31,7 @@ export default function Detail() {
   // console.log(id);
 
   let copy = todo.find((x) => x.id === Number(id));
-  // console.log(copy);
+  // console.log("checking detail copy value " + JSON.stringify(copy));
 
   return (
     <>

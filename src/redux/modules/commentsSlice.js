@@ -18,7 +18,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   "GET_COMMENT_BY_TODO_ID",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.get();
+      const { data } = await axios.get(`http://localhost:5001/comments?todoId=${arg}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -30,7 +30,7 @@ export const __deleteComment = createAsyncThunk(
   "DELETE_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete();
+      await axios.delete(`http://localhost:5001/comments/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -41,8 +41,9 @@ export const __deleteComment = createAsyncThunk(
 export const __updateComment = createAsyncThunk(
   "UPDATE_COMMENT",
   async (arg, thunkAPI) => {
+    console.log(JSON.stringify(arg))
     try {
-      axios.patch();
+      axios.patch(`http://localhost:5001/comments/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -54,7 +55,10 @@ export const __addComment = createAsyncThunk(
   "ADD_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.post();
+      console.log("what is arg" + JSON.stringify(arg))
+      console.log("what is thinkAPI" + JSON.stringify(thunkAPI))
+      const { data } = await axios.post("http://localhost:5001/comments", arg);
+      console.log("checking data" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -68,11 +72,11 @@ const initialState = {
     isLoading: false,
     error: null,
   },
-  // commentsByTodoId: {
-  //   data: [],
-  //   isLoading: false,
-  //   error: null,
-  // },
+  commentsByTodoId: {
+    data: [],
+    isLoading: false,
+    error: null,
+  },
 };
 
 export const commentsSlice = createSlice({
@@ -139,10 +143,12 @@ export const commentsSlice = createSlice({
     // 댓글 추가
     [__addComment.fulfilled]: (state, action) => {
       state.commentsByTodoId.isLoading = false;
+      console.log("checking fulfilled addcomment" + JSON.stringify(action.payload))
       state.commentsByTodoId.data.push(action.payload);
     },
     [__addComment.rejected]: (state, action) => {
       state.commentsByTodoId.isLoading = false;
+      console.log("checking rejected addcomment" + action.payload)
       state.commentsByTodoId.error = action.payload;
     },
     [__addComment.pending]: (state) => {
