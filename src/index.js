@@ -11,6 +11,9 @@ import "./index.css";
 // Component
 import App from "./App";
 import Form from "./component/form/Form";
+import Detail from "./component/detail/Detail";
+import TodoList from "./component/todoList/TodoList";
+import Comment from "./component/comment/Comment";
 
 // Route
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,6 +28,13 @@ root.render(
           <Route path="/" element={<App />} />
         </Routes>
       </BrowserRouter>
+      <Routes>
+        <Route path="/comment" element={<Comment />} />
+        <Route path="/todolist" element={<TodoList />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route path="/form" element={<Form />} />
+        <Route path="/" element={<TodoList />} />
+      </Routes>
     </Provider>
     {/* Provider 위치 여기 맞는지? */}
   </>
