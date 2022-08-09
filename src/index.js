@@ -10,17 +10,19 @@ import "./index.css";
 // Component
 import App from "./App";
 import Form from "./component/form/Form";
+import Detail from "./component/detail/Detail";
+import TodoList from "./component/todoList/TodoList";
+import Comment from "./component/comment/Comment";
 
 // Route
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Detail from "./component/detail/Detail";
-import TodoList from "./component/todoList/TodoList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
+        <Route path="/comment" element={<Comment />}/>
         <Route path="/todolist" element={<TodoList />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/form" element={<Form />} />

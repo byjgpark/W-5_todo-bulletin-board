@@ -10,6 +10,8 @@ import {
 
 export default function Detail() {
   const navigate = useNavigate();
+
+
   const dispatch = useDispatch();
   let [todo] = useState();
   let [editBody, setEditBody] = useState("");
