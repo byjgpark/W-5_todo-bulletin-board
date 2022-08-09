@@ -25,7 +25,7 @@ export default function Detail() {
   }, [dispatch]);
 
   useEffect(() => {
-    setEditBody(todo?.body);
+    setEditBody(todo?.content);
   }, [todo]);
 
   const onEditHandler = () => {
@@ -36,7 +36,7 @@ export default function Detail() {
     dispatch(
       __updateTodoThunk({
         ...todo,
-        body: editBody,
+        content: editBody,
       })
     );
     setEditBody(editBody);
@@ -61,7 +61,7 @@ export default function Detail() {
             <Textarea value={editBody} onChange={onChangeHandler} />
           </>
         ) : (
-          <main style={{ marginLeft: "30px" }}>{todo?.body}</main>
+          <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
         )}
 
         <div style={{ float: "right" }}>

@@ -21,7 +21,7 @@ export default function Todo(props) {
       >
         <div>{props.todo.id}</div>
         <div>{props.todo.title}</div>
-        <div>{props.todo.body}</div>
+        <div>{props.todo.content}</div>
         <button onClick={onClickHandler}>삭제하기</button>
       </StCard>
     </>
