@@ -5,7 +5,7 @@ export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+"/form");
+      const { data } = await axios.get(process.env.REACT_APP_API_KEY+"comments");
       // console.log("getCommentsThunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -18,7 +18,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   "GET_COMMENT_BY_TODO_ID",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+`/comments?todoId=${arg}`
+      const { data } = await axios.get(process.env.REACT_APP_API_KEY+`comments?todoId=${arg}`
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
@@ -31,7 +31,7 @@ export const __deleteComment = createAsyncThunk(
   "DELETE_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete(process.env.REACT_APP_API_KEY + `/comments/${arg}`);
+      await axios.delete(process.env.REACT_APP_API_KEY + `comments/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -44,7 +44,7 @@ export const __updateComment = createAsyncThunk(
   async (arg, thunkAPI) => {
     console.log(JSON.stringify(arg));
     try {
-      axios.patch(process.env.REACT_APP_API_KEY + `/comments/${arg.id}`, arg);
+      axios.patch(process.env.REACT_APP_API_KEY + `comments/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -56,10 +56,7 @@ export const __addComment = createAsyncThunk(
   "ADD_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      // console.log("what is arg" + JSON.stringify(arg))
-      // console.log("what is thinkAPI" + JSON.stringify(thunkAPI))
-      const { data } = await axios.post(process.env.REACT_APP_API_KEY + "/comments", arg);
-      // console.log("checking data" + JSON.stringify(data))
+      const { data } = await axios.post(process.env.REACT_APP_API_KEY + "comments", arg);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
