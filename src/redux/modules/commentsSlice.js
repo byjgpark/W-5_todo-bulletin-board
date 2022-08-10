@@ -57,10 +57,10 @@ export const __addComment = createAsyncThunk(
   "ADD_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      console.log("what is arg" + JSON.stringify(arg));
-      console.log("what is thinkAPI" + JSON.stringify(thunkAPI));
+      // console.log("what is arg" + JSON.stringify(arg))
+      // console.log("what is thinkAPI" + JSON.stringify(thunkAPI))
       const { data } = await axios.post("http://localhost:3001/comments", arg);
-      console.log("checking data" + JSON.stringify(data));
+      // console.log("checking data" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
