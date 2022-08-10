@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { __deleteTodoThunk } from "../../redux/modules/todosSlice";
+import { VscTrash } from "react-icons/vsc";
 
 export default function Todo(props) {
   const navigate = useNavigate();
@@ -19,10 +20,20 @@ export default function Todo(props) {
           navigate(`/detail/${props.todo.id}`);
         }}
       >
-        <div>{props.todo.id}</div>
-        <div>{props.todo.title}</div>
-        <div>by {props.todo.nickname}</div>
-        <button onClick={onClickHandler}>삭제하기</button>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ fontSize: "20px" }}>{props.todo.title}</div>
+          <button
+            onClick={onClickHandler}
+            style={{ background: "white", border: "none", fontSize: "25px" }}
+          >
+            🗑️
+          </button>
+        </div>
+        <Container>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            nickname : {props.todo.nickname}
+          </div>
+        </Container>
       </StCard>
     </>
   );
@@ -36,4 +47,9 @@ const StCard = styled.div`
   border-radius: 12px;
   width: 100%;
   margin-bottom: 12px;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  margin: 10px 0;
 `;

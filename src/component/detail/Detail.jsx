@@ -49,50 +49,80 @@ export default function Detail() {
 
   return (
     <>
-      <Box2>
-        <Box3>
+      <DetailCon>
+        <DetailIdTi>
           <div>id : {todo?.id}</div>
           {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
-        </Box3>
-        <h1 style={{ marginLeft: "30px" }}>{todo?.title}</h1>
-
-        {edit ? (
-          <>
-            <Textarea value={editBody} onChange={onChangeHandler} />
-          </>
-        ) : (
-          <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
-        )}
-
-        <div style={{ float: "right" }}>
+        </DetailIdTi>
+        <DetailTodoTi>{todo?.title}</DetailTodoTi>
+        <DetailSubCon>
           {edit ? (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
-              저장하기
-            </BtnBox>
+            <>
+              <Textarea value={editBody} onChange={onChangeHandler} />
+            </>
           ) : (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
-              수정하기
-            </BtnBox>
+            <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
           )}
-        </div>
-      </Box2>
-      <Comment></Comment>
+
+          <div style={{ float: "right" }}>
+            {edit ? (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+                저장하기
+              </BtnBox>
+            ) : (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
+                수정하기
+              </BtnBox>
+            )}
+          </div>
+        </DetailSubCon>
+        <Comment></Comment>
+      </DetailCon>
     </>
   );
 }
 
-const Box2 = styled.div`
-  width: 500px;
-  height: 300px;
-  border: 1px solid rgb(238, 238, 238);
+const DetailCon = styled.div`
+  height: calc(100vh - 45px);
+  background-color: rgb(255, 255, 255);
+  padding: 24px;
 `;
-const Box3 = styled.div`
+const DetailIdTi = styled.div`
   display: flex;
-  height: 80px;
-  justify-content: space-between;
-  padding: 0px 24px;
+  -webkit-box-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 32px;
 `;
+const DetailTodoTi = styled.div`
+  font-size: 32px;
+  font-weight: 700;
+`;
+const DetailSubCon = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 50px;
+  min-height: 100px;
+`;
+
+// const Box2 = styled.div`
+//   width: 500px;
+//   height: 300px;
+//   border: 1px solid rgb(238, 238, 238);
+// `;
+// const Box3 = styled.div`
+//   display: flex;
+//   height: 80px;
+//   justify-content: space-between;
+//   padding: 0px 24px;
+//   align-items: center;
+// `;
 
 const BtnBox = styled.button`
   border: 1px solid rgb(221, 221, 221);
