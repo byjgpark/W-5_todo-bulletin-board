@@ -1,0 +1,58 @@
+.input-group {
+  background-color: yellowgreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  /* background-image: url("https://i.pinimg.com/564x/be/d5/fd/bed5fd2f49d74a66065835d9bdddc1fb.jpg");
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+  background-position: center 70%;
+  background-size: cover; */
+}
+
+.input-nicktitle {
+  background-color: bisque;
+  height: 40px;
+  width: 300px;
+  border-radius: 12px;
+  padding: 0 20px;
+  border: 2px solid rgb(160, 213, 246);
+}
+
+.input-content {
+  background-color: lightseagreen;
+  height: 150px;
+  width: 300px;
+  border-radius: 12px;
+  padding: 0 20px;
+  border: 2px solid rgb(160, 213, 246);
+}
+
+.add-button {
+  background-color: lightsalmon;
+  height: 30px;
+  width: 100px;
+  border-radius: 12px;
+  padding: 0 12px;
+  margin: 50px 0px 0px 0px;
+  border: 2px solid rgb(160, 213, 246);
+}
+
+.h2ninput {
+  background-color: aqua;
+  margin: 0px 0px 25px 0px;
+}
+
+.h2 {
+  background-color: firebrick;
+  margin: 0px 0px 13px 15px;
+}
+
+.ntc {
+  margin: 55px 0px 0px 0px;
+}

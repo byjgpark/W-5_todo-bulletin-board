@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function App() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="maingroup">
       <div>
         <h1>B반 대나무숲</h1>
       </div>

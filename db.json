@@ -1,16 +1,10 @@
 {
   "form": [
     {
-      "nickname": "asdfasdf",
-      "title": "asdfasdfas",
-      "content": "asdfasdfasdfasdfadsfasdf",
+      "nickname": "Mia",
+      "title": "우왕",
+      "content": "드디어 연결 성공!",
       "id": 1
-    },
-    {
-      "nickname": "asdfasdf",
-      "title": "asdfasdfasdf",
-      "content": "asdfasdfasdf",
-      "id": 2
     }
   ],
   "comments": [
