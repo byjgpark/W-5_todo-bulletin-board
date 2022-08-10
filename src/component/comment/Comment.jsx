@@ -16,7 +16,7 @@ function Comment() {
   // Hook
   const [open, setOpen] = useState(false);
   const [editShow, setEditShow] = useState(false);
-  
+
   // Form Hook
   const [userID, setIDName] = useState("");
   const [cmtBody, setCmtBody] = useState("");
@@ -26,7 +26,7 @@ function Comment() {
   const [editCmt, setEditCmt] = useState({
     id: "",
     username: "",
-    body: ""
+    body: "",
   });
 
   // console.log("This is " + editShow);
@@ -38,8 +38,11 @@ function Comment() {
   const comments = useSelector((state) => state.comments);
   const dispatch = useDispatch();
 
-  if(comments.commentsByTodoId.data.length !== 0){
-  console.log("checking useSelector " + JSON.stringify(comments.commentsByTodoId.data.map((e) => e)))
+  if (comments.commentsByTodoId.data.length !== 0) {
+    console.log(
+      "checking useSelector " +
+        JSON.stringify(comments.commentsByTodoId.data.map((e) => e))
+    );
   }
 
   // Router
@@ -66,10 +69,10 @@ function Comment() {
         username: userID,
         body: cmtBody,
       })
-    )
-    setIDName("")
-    setCmtBody("")
-  }
+    );
+    setIDName("");
+    setCmtBody("");
+  };
 
   // const onUpdateBtnHandler = (cmt) => {
   //   console.log("checking" + JSON.stringify(cmt))
@@ -78,46 +81,48 @@ function Comment() {
   // };
 
   return (
-     <div  id="example-collapse-text">
-      <div className="SVavv">
-        <div className="fBRIGy">눌러서 댓글내리기</div>
-      </div>
-      <form className="hPRjqN" onSubmit={onSubmitHandler}>
-        <div className="cSGhKx">
+    <div className="wrap-comment">
+      <div id="example-collapse-text">
+        <div className="SVavv">
+          <div className="fBRIGy">댓글 작성하기</div>
+        </div>
+        <form className="hPRjqN" onSubmit={onSubmitHandler}>
+          <div className="cSGhKx">
+            <input
+              type="text"
+              placeholder="닉네임"
+              className="iskVDh"
+              value={userID}
+              onChange={(e) => {
+                // Getting User title input
+                setIDName(e.target.value);
+              }}
+              required
+            />
+          </div>
           <input
             type="text"
-            placeholder="이름 (5자 이내)"
+            placeholder="댓글을 입력해주세요"
             className="iskVDh"
-            value={userID}
+            value={cmtBody}
             onChange={(e) => {
               // Getting User title input
-              setIDName(e.target.value);
+              setCmtBody(e.target.value);
             }}
             required
           />
-        </div>
-        <input
-          type="text"
-          placeholder="댓글을 추가하세요. (100자 이내)"
-          className="iskVDh"
-          value={cmtBody}
-          onChange={(e) => {
-            // Getting User title input
-            setCmtBody(e.target.value);
-          }}
-          required
-        />
-        <button type="submit" className="bziMUR">추가하기</button>
-      </form>
-      <div className="kJEvVR">
-        {/* {comments.comments.isLoading === false &&
+          <button type="submit" className="bziMUR">
+            추가하기
+          </button>
+        </form>
+        <div className="kJEvVR">
+          {/* {comments.comments.isLoading === false &&
           comments.comments.data.map((comment) => {
             if (comment.comment !== undefined) {
               return ( */}
-        {/* { comments.comments.data[id] !== undefined &&
+          {/* { comments.comments.data[id] !== undefined &&
               comments.comments.data[id].comment.map((el) => el */}
-        {
-          editShow === false ? (
+          {editShow === false ? (
             comments.commentsByTodoId.data.length !== 0 &&
             comments.commentsByTodoId.data.map((cmt) => {
               // console.log("checking here " + e)
@@ -132,15 +137,13 @@ function Comment() {
                     <button
                       className="bPVoHM"
                       onClick={() => {
-                        setEditCmt(  
-                          { 
-                            id: cmt.id,
-                            username: cmt.username,
-                            body: cmt.body
-                          }
-                          )
+                        setEditCmt({
+                          id: cmt.id,
+                          username: cmt.username,
+                          body: cmt.body,
+                        });
                         // console.log("hello check state " + editCmt.id, editCmt.username)
-                        setTextEdit("")
+                        setTextEdit("");
                         setEditShow(true);
                       }}
                     >
@@ -193,14 +196,14 @@ function Comment() {
                         JSON.stringify(comments.commentsByTodoId.data)
                     );
                     // if(editShow === false){
-                      dispatch(
+                    dispatch(
                       __updateComment({
                         id: editCmt.id,
                         body: textEdit,
                         username: editCmt.username,
                         todoId: id,
                       })
-                    )
+                    );
                     // }
                     setEditShow(false);
                     // console.log("check here" + editShow)
@@ -210,10 +213,10 @@ function Comment() {
                 </button>
               </div>
             </div>
-          )
-        }
+          )}
+        </div>
       </div>
-      </div>
+    </div>
   );
 }
 
