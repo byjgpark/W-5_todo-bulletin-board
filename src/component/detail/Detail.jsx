@@ -49,7 +49,7 @@ export default function Detail() {
   };
 
   return (
-    <div class="whole-detail">
+    <div className="whole-detail">
       <div className="detail-box">
         <span className="title-detail">상세보기</span>
         <div className="idnum">
