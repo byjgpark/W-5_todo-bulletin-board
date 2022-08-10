@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 function App() {
   const navigate = useNavigate();
+
+  console.log("hello" + process.env.REACT_APP_API_KEY)
+
   return (
     <div>
       <MainLYT>

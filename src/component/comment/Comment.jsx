@@ -14,7 +14,6 @@ import "./comment.css";
 
 function Comment() {
   // Hook
-  const [open, setOpen] = useState(false);
   const [editShow, setEditShow] = useState(false);
   
   // Form Hook
@@ -80,7 +79,7 @@ function Comment() {
   return (
      <div  id="example-collapse-text">
       <div className="SVavv">
-        <div className="fBRIGy">눌러서 댓글내리기</div>
+        <div className="fBRIGy">댓글남기기🤖</div>
       </div>
       <form className="hPRjqN" onSubmit={onSubmitHandler}>
         <div className="cSGhKx">
@@ -89,6 +88,7 @@ function Comment() {
             placeholder="이름 (5자 이내)"
             className="iskVDh"
             value={userID}
+            maxLength={5}
             onChange={(e) => {
               // Getting User title input
               setIDName(e.target.value);
@@ -101,6 +101,7 @@ function Comment() {
           placeholder="댓글을 추가하세요. (100자 이내)"
           className="iskVDh"
           value={cmtBody}
+          maxLength={100}
           onChange={(e) => {
             // Getting User title input
             setCmtBody(e.target.value);
@@ -140,7 +141,7 @@ function Comment() {
                           }
                           )
                         // console.log("hello check state " + editCmt.id, editCmt.username)
-                        setTextEdit("")
+                        setTextEdit(cmt.body)
                         setEditShow(true);
                       }}
                     >

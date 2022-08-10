@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
+import "./style.css"
 import Comment from "../comment/Comment";
 import { useEffect, useState } from "react";
 import {
@@ -49,16 +49,16 @@ export default function Detail() {
 
   return (
     <>
-    <DetailCon>
-      <DetailIdTi>
+    <div className="detail-group">
+      <div className="detail-title">
           <div>id : {todo?.id}</div>
-          {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
-      </DetailIdTi>
-        <DetailTodoTi>{todo?.title}</DetailTodoTi>
-        <DetailSubCon>
+          {!edit && <button className="detail-previBtn" onClick={() => navigate(-1)}>이전으로</button>}
+      </div>    
+        <div className="detail-title">{todo?.title}</div>
+        <div className="detail-subGroup">
         {edit ? (
           <>
-            <Textarea value={editBody} onChange={onChangeHandler} />
+            <textarea className="detail-txtArea" value={editBody} onChange={onChangeHandler}></textarea>
           </>
         ) : (
           <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
@@ -66,27 +66,24 @@ export default function Detail() {
 
         <div style={{ float: "right" }}>
           {edit ? (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+            <button className="detail-editBtn"><BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
               저장하기
             </BtnBox>
+            </button>
           ) : (
             <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
               수정하기
             </BtnBox>
           )}
         </div>
-        </DetailSubCon>
+        </div>
       <Comment></Comment>
-      </DetailCon>
+      </div>
     </>
   );
 }
 
-const DetailCon = styled.div`
-  height: calc(100vh - 45px);
-  background-color: rgb(255, 255, 255);
-  padding: 24px;
-`
+
 const DetailIdTi = styled.div`
   display: flex;
   -webkit-box-align: center;
