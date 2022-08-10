@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { __getTodosThunk } from "../../redux/modules/todosSlice";
+import Layout from "../style/Layout";
 import Todo from "../todo/Todo";
+import "./style.css";
 
 export default function TodoList() {
   const dispatch = useDispatch();
@@ -17,22 +19,12 @@ export default function TodoList() {
 
   return (
     <>
-      <Container>내 할일</Container>
-      <StContainer>
+      <div className="layout-list">
+        <div className="nameoftitle">글 목록</div>
         {todos.map((todo) => {
           return <Todo todo={todo} key={todo.id} />;
         })}
-      </StContainer>
+      </div>
     </>
   );
 }
-
-const Container = styled.div`
-  width: 100%;
-  margin: 24px;
-  font-size: 24px;
-`;
-
-const StContainer = styled.div`
-  height: calc(100% - 45px - 48px);
-`;

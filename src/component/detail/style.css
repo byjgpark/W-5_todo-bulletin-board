@@ -1,51 +1,90 @@
-.detail-group{
-  height: calc(100vh - 45px);
-  background-color: rgb(255, 255, 255);
-  padding: 24px;
+.whole-detail {
+  /* background-color: chocolate; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
 }
 
-.detail-title{
+.detail-box {
+  /* background-color: yellow; */
+  /* height: 200px;
+    padding: 24px; */
+  border-radius: 12px;
+  border: 2px solid rgb(172, 183, 190);
+  height: 300px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.title-detail {
+  /* background-color: lightslategrey; */
+  margin-top: 15px;
+}
+
+.idnum {
+  /* background-color: skyblue; */
   display: flex;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
   flex-direction: row;
-  margin-bottom: 32px;
+  margin-bottom: 10px;
+  width: 600px;
 }
 
-.detail-previBtn{
-  border: 1px solid rgb(221, 221, 221);
-  height: 40px;
-  width: 120px;
-  background-color: rgb(255, 255, 255);
+.button-save {
+  /* background-color: darkgreen; */
+  height: 25px;
+  width: 53px;
   border-radius: 12px;
+  border: 2px solid rgb(160, 213, 246);
+  padding-left: 9px;
+  padding-right: 4px;
+  padding-top: 10px;
+  font-size: 14px;
   cursor: pointer;
 }
 
-.detail-editBtn{
-  
+.button-revise {
+  /* background-color: indigo; */
+  height: 17px;
+  width: 56px;
+  border-radius: 12px;
+  /* padding: 8px; */
+  padding-left: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid rgb(160, 213, 246);
+  cursor: pointer;
+  font-size: 14px;
 }
-
-.detail-title{
-  font-size: 32px;
+.contNrevbut {
+  /* background-color: orange; */
+  display: flex;
+  /* -webkit-box-align: center; */
+  align-items: center;
+  /* -webkit-box-pack: justify; */
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  min-height: 90px;
+}
+.detail-title {
+  /* background-color: deeppink; */
+  font-size: 25px;
   font-weight: 700;
 }
 
-.detail-subGroup{
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-top: 50px;
-  min-height: 100px;
-}
-
-.detail-txtArea{
-  width: 70%;
-  border: 1px solid #eee;
-  padding: 12px;
-  font-size: 14px;
+.detail-content {
+  /* background-color: rgb(195, 108, 217); */
+  margin-right: 30px;
 }
