@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import { __getTodosThunk } from "../../redux/modules/todosSlice";
-import Layout from "../style/Layout";
 import Todo from "../todo/Todo";
 import "./style.css";
 
@@ -10,8 +8,6 @@ export default function TodoList() {
   const dispatch = useDispatch();
 
   const { todos } = useSelector((state) => state.todos);
-
-  console.log(todos);
 
   useEffect(() => {
     dispatch(__getTodosThunk());

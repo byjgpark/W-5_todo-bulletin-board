@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
+
   return (
     <div className="main-group">
       <div className="main-title">

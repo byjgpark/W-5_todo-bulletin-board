@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { __deleteTodoThunk } from "../../redux/modules/todosSlice";
-import { VscTrash } from "react-icons/vsc";
 import "./style.css";
 
 export default function Todo(props) {

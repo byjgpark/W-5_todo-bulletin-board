@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-// import { __getTodos } from "../../redux/modules/todoSlice";
 import {
   __addComment,
   __getCommnetsByTodoId,
@@ -14,7 +12,6 @@ import "./comment.css";
 
 function Comment() {
   // Hook
-  const [open, setOpen] = useState(false);
   const [editShow, setEditShow] = useState(false);
 
   // Form Hook
@@ -29,35 +26,16 @@ function Comment() {
     body: "",
   });
 
-  // console.log("This is " + editShow);
-
-  // console.log("checking " + userID, cmtBody)
-
   // Redux
   // const todos = useSelector((state) => state.todos);
   const comments = useSelector((state) => state.comments);
   const dispatch = useDispatch();
 
-  if (comments.commentsByTodoId.data.length !== 0) {
-    console.log(
-      "checking useSelector " +
-        JSON.stringify(comments.commentsByTodoId.data.map((e) => e))
-    );
-  }
-
   // Router
   const { id } = useParams();
 
-  // console.log("hello todos " + JSON.stringify(todos.todos))
-  // if(comments.comments.data[id] !== undefined){
-  //   if(comments.comments.data[id].comment !== undefined){
-  // console.log("hello comments " + JSON.stringify(comments.comments.data[id].comment.map((e) => e)))
-  // console.log("hello comments " + JSON.stringify(comments.comments.data[id].comment))
-  // }
-  // }
   useEffect(() => {
-    // dispatch(__getTodos());
-    // dispatch(__getCommentsThunk());
+
     dispatch(__getCommnetsByTodoId(id));
   }, [dispatch]);
 
@@ -73,12 +51,6 @@ function Comment() {
     setIDName("");
     setCmtBody("");
   };
-
-  // const onUpdateBtnHandler = (cmt) => {
-  //   console.log("checking" + JSON.stringify(cmt))
-
-  //   // setEditShow(true);
-  // };
 
   return (
     <div className="wrap-comment">
@@ -116,23 +88,15 @@ function Comment() {
           </button>
         </form>
         <div className="kJEvVR">
-          {/* {comments.comments.isLoading === false &&
-          comments.comments.data.map((comment) => {
-            if (comment.comment !== undefined) {
-              return ( */}
-          {/* { comments.comments.data[id] !== undefined &&
-              comments.comments.data[id].comment.map((el) => el */}
           {editShow === false ? (
             comments.commentsByTodoId.data.length !== 0 &&
             comments.commentsByTodoId.data.map((cmt) => {
-              // console.log("checking here " + e)
               return (
                 <div className="jOlBJN">
                   <div className="cPgLdn">
                     <div>{cmt.username}</div>
                     <div className="fBRIGy">{cmt.body}</div>
                   </div>
-                  {console.log("hello this is cmt " + JSON.stringify(cmt))}
                   <div className="jPiwpb">
                     <button
                       className="bPVoHM"
@@ -142,7 +106,7 @@ function Comment() {
                           username: cmt.username,
                           body: cmt.body,
                         });
-                        // console.log("hello check state " + editCmt.id, editCmt.username)
+            
                         setTextEdit("");
                         setEditShow(true);
                       }}
@@ -162,12 +126,8 @@ function Comment() {
               );
             })
           ) : (
-            // console.log('hello')
-            // comments.commentsByTodoId.data.map((cmt) => {
-            // return (
             <div className="jOlBJN">
               <div className="cPgLdn">
-                {/* <div>{e.username}</div> */}
                 <input
                   type="text"
                   className="iskVDh"
@@ -195,7 +155,6 @@ function Comment() {
                       "checking onCick " +
                         JSON.stringify(comments.commentsByTodoId.data)
                     );
-                    // if(editShow === false){
                     dispatch(
                       __updateComment({
                         id: editCmt.id,
@@ -204,9 +163,7 @@ function Comment() {
                         todoId: id,
                       })
                     );
-                    // }
                     setEditShow(false);
-                    // console.log("check here" + editShow)
                   }}
                 >
                   저장
