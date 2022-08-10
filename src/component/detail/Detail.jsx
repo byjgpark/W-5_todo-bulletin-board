@@ -49,34 +49,34 @@ export default function Detail() {
 
   return (
     <>
-    <DetailCon>
-      <DetailIdTi>
+      <DetailCon>
+        <DetailIdTi>
           <div>id : {todo?.id}</div>
           {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
-      </DetailIdTi>
+        </DetailIdTi>
         <DetailTodoTi>{todo?.title}</DetailTodoTi>
         <DetailSubCon>
-        {edit ? (
-          <>
-            <Textarea value={editBody} onChange={onChangeHandler} />
-          </>
-        ) : (
-          <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
-        )}
-
-        <div style={{ float: "right" }}>
           {edit ? (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
-              저장하기
-            </BtnBox>
+            <>
+              <Textarea value={editBody} onChange={onChangeHandler} />
+            </>
           ) : (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
-              수정하기
-            </BtnBox>
+            <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
           )}
-        </div>
+
+          <div style={{ float: "right" }}>
+            {edit ? (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+                저장하기
+              </BtnBox>
+            ) : (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
+                수정하기
+              </BtnBox>
+            )}
+          </div>
         </DetailSubCon>
-      <Comment></Comment>
+        <Comment></Comment>
       </DetailCon>
     </>
   );
@@ -86,7 +86,7 @@ const DetailCon = styled.div`
   height: calc(100vh - 45px);
   background-color: rgb(255, 255, 255);
   padding: 24px;
-`
+`;
 const DetailIdTi = styled.div`
   display: flex;
   -webkit-box-align: center;
@@ -95,11 +95,11 @@ const DetailIdTi = styled.div`
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 32px;
-`
+`;
 const DetailTodoTi = styled.div`
   font-size: 32px;
   font-weight: 700;
-`
+`;
 const DetailSubCon = styled.div`
   display: flex;
   -webkit-box-align: center;
@@ -109,7 +109,7 @@ const DetailSubCon = styled.div`
   flex-direction: column;
   margin-top: 50px;
   min-height: 100px;
-`
+`;
 
 // const Box2 = styled.div`
 //   width: 500px;
