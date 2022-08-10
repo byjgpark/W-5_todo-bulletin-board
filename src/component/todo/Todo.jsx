@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { __deleteTodoThunk } from "../../redux/modules/todosSlice";
 import { VscTrash } from "react-icons/vsc";
+import "./style.css";
 
 export default function Todo(props) {
   const navigate = useNavigate();
@@ -15,41 +16,46 @@ export default function Todo(props) {
 
   return (
     <>
-      <StCard
+      <div
+        className="whole-list"
         onClick={() => {
           navigate(`/detail/${props.todo.id}`);
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div
+          className="titleNicon"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
           <div style={{ fontSize: "20px" }}>{props.todo.title}</div>
           <button
             onClick={onClickHandler}
-            style={{ background: "white", border: "none", fontSize: "25px" }}
+            style={{
+              background: "transparent",
+              border: "none",
+              fontSize: "25px",
+            }}
           >
             🗑️
           </button>
         </div>
-        <Container>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            nickname : {props.todo.nickname}
-          </div>
-        </Container>
-      </StCard>
+        <div className="content">{props.todo.content}</div>
+        <div
+          className="nickname"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
+          by {props.todo.nickname}
+        </div>
+      </div>
     </>
   );
 }
 
-const StCard = styled.div`
-  padding: 12px;
-  height: 90px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  border-radius: 12px;
-  width: 100%;
-  margin-bottom: 12px;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  margin: 10px 0;
-`;
+// const StCard = styled.div`
+//   padding: 12px;
+//   height: 90px;
+//   border: 1px solid #ddd;
+//   background-color: #fff;
+//   border-radius: 12px;
+//   width: 100%;
+//   margin-bottom: 12px;
+// `;

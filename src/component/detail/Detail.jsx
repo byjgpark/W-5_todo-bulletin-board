@@ -7,6 +7,7 @@ import {
   __getTodosThunk,
   __updateTodoThunk,
 } from "../../redux/modules/todosSlice";
+import "./style.css";
 
 export default function Detail() {
   const navigate = useNavigate();
@@ -48,68 +49,50 @@ export default function Detail() {
   };
 
   return (
-    <>
-      <DetailCon>
-        <DetailIdTi>
+    <div class="whole-detail">
+      <div className="detail-box">
+        <span className="title-detail">상세보기</span>
+        <div className="idnum">
           <div>id : {todo?.id}</div>
           {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
-        </DetailIdTi>
-        <DetailTodoTi>{todo?.title}</DetailTodoTi>
-        <DetailSubCon>
+        </div>
+        <div className="detail-title">{todo?.title}</div>
+        <div className="contNrevbut">
           {edit ? (
             <>
-              <Textarea value={editBody} onChange={onChangeHandler} />
+              <Textarea value={editBody} onChange={onChangeHandler}></Textarea>
             </>
           ) : (
-            <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
+            <main className="detail-content" style={{ marginLeft: "30px" }}>
+              {todo?.content}
+            </main>
           )}
 
           <div style={{ float: "right" }}>
             {edit ? (
-              <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+              <div
+                className="button-save"
+                // style={{ marginRight: "30px" }}
+                onClick={onSubmitHandler}
+              >
                 저장하기
-              </BtnBox>
+              </div>
             ) : (
-              <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
+              <div
+                className="button-revise"
+                // style={{ marginRight: "30px" }}
+                onClick={onEditHandler}
+              >
                 수정하기
-              </BtnBox>
+              </div>
             )}
           </div>
-        </DetailSubCon>
-        <Comment></Comment>
-      </DetailCon>
-    </>
+        </div>
+      </div>
+      <Comment></Comment>
+    </div>
   );
 }
-
-const DetailCon = styled.div`
-  height: calc(100vh - 45px);
-  background-color: rgb(255, 255, 255);
-  padding: 24px;
-`;
-const DetailIdTi = styled.div`
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-bottom: 32px;
-`;
-const DetailTodoTi = styled.div`
-  font-size: 32px;
-  font-weight: 700;
-`;
-const DetailSubCon = styled.div`
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  flex-direction: column;
-  margin-top: 50px;
-  min-height: 100px;
-`;
 
 // const Box2 = styled.div`
 //   width: 500px;
@@ -125,17 +108,25 @@ const DetailSubCon = styled.div`
 // `;
 
 const BtnBox = styled.button`
-  border: 1px solid rgb(221, 221, 221);
+  /* border: 1px solid rgb(221, 221, 221);
   height: 40px;
   width: 120px;
   background-color: rgb(255, 255, 255);
+  border-radius: 12px; */
+  height: 42px;
+  width: 68px;
   border-radius: 12px;
+  border: 2px solid rgb(160, 213, 246);
+  padding-left: 7px;
   cursor: pointer;
+  font-size: 14px;
 `;
 
 const Textarea = styled.textarea`
-  width: 70%;
-  border: 1px solid #eee;
+  width: 500px;
+  height: 50px;
+  border: 2px solid #8671c6;
   padding: 12px;
   font-size: 14px;
+  margin-bottom: 20px;
 `;
