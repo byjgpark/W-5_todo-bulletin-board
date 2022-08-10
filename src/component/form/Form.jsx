@@ -1,18 +1,79 @@
+import axios from "axios";
 import React, { useState } from "react";
+import "./style.css";
 
 function Form() {
+  const [post, setPost] = useState({
+    nickname: "",
+    title: "",
+    content: "",
+  });
+
+  const onSubmitHandler = (post) => {
+    axios.post(process.env.REACT_APP_API_KEY + "/form", post);
+    alert("새로운 게시글이 추가 되었어요!")
+  };
+
   return (
     <div>
-      <h1>닉네임</h1>
-      <input
-        type="text"
-        placeholder="닉네임을 입력해주세요. (5자 이내)"
-      ></input>
-      <h1>제목</h1>
-      <input type="text" placeholder="제목을 입력해주세요. (5자 이내)"></input>
-      <h1>내용</h1>
-      <input type="text" placeholder="내용을 입력해주세요. (10자 이내)"></input>
-      <button>추가하기</button>
+      <form
+        onSubmit={(e) => {
+          // 👇 submit했을 때 브라우저의 새로고침을 방지합니다.
+          e.preventDefault();
+          onSubmitHandler(post);
+        }}
+      >
+        <div className="input-group">
+          <div className="ntc">
+            <div className="h2ninput">
+              <h2 className="h2">닉네임</h2>
+              <input
+                type="text"
+                className="input-nicktitle"
+                onChange={(ev) => {
+                  const { value } = ev.target;
+                  setPost({
+                    ...post,
+                    nickname: value,
+                  });
+                }}
+                placeholder="닉네임을 입력해 주세요."
+              ></input>
+            </div>
+            <div className="h2ninput">
+              <h2 className="h2">제목</h2>
+              <input
+                type="text"
+                className="input-nicktitle"
+                onChange={(ev) => {
+                  const { value } = ev.target;
+                  setPost({
+                    ...post,
+                    title: value,
+                  });
+                }}
+                placeholder="제목을 입력해 주세요."
+              ></input>
+            </div>
+            <div className="h2ninput">
+              <h2 className="h2">내용</h2>
+              <input
+                type="text"
+                className="input-content"
+                onChange={(ev) => {
+                  const { value } = ev.target;
+                  setPost({
+                    ...post,
+                    content: value,
+                  });
+                }}
+                placeholder="내용을 입력해 주세요."
+              ></input>
+            </div>
+          </div>
+          <button className="add-button">추가하기</button>
+        </div>
+      </form>
     </div>
   );
 }

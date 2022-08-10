@@ -1,0 +1,14 @@
+.layout-list {
+  /* background-color: yellowgreen; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.nameoftitle {
+  /* background-color: blue; */
+  font-size: 35px;
+  margin-bottom: 35px;
+}

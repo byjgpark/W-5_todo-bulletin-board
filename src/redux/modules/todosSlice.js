@@ -5,7 +5,7 @@ export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/todos`);
+      const { data } = await axios.get(process.env.REACT_APP_API_KEY+'/form');
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -17,7 +17,7 @@ export const __deleteTodoThunk = createAsyncThunk(
   "DELETE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete(`http://localhost:3001/todos/${arg}`);
+      await axios.delete(process.env.REACT_APP_API_KEY+`/form/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -29,7 +29,7 @@ export const __updateTodoThunk = createAsyncThunk(
   "UPDATE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.patch(`http://localhost:3001/todos/${arg.id}`, arg);
+      await axios.patch(process.env.REACT_APP_API_KEY + `/form/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -42,7 +42,6 @@ const initialState = {
   isLoading: false,
   error: null,
 };
-
 export const todosSlice = createSlice({
   name: "todos",
   initialState,
@@ -71,7 +70,7 @@ export const todosSlice = createSlice({
         if (todo.id === action.payload.id) {
           return {
             ...todo,
-            body: action.payload.body,
+            content: action.payload.content,
           };
         } else {
           return todo;
@@ -83,5 +82,5 @@ export const todosSlice = createSlice({
   },
 });
 
-export const {} = todosSlice.actions;
+// export const {} = todosSlice.actions;
 export default todosSlice.reducer;
