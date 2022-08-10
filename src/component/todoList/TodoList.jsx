@@ -10,8 +10,6 @@ export default function TodoList() {
 
   const { todos } = useSelector((state) => state.todos);
 
-  console.log(todos);
-
   useEffect(() => {
     dispatch(__getTodosThunk());
   }, [dispatch]);
