@@ -5,7 +5,7 @@ export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+'/form');
+      const { data } = await axios.get(process.env.REACT_APP_API_KEY+'todos');
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -17,7 +17,7 @@ export const __deleteTodoThunk = createAsyncThunk(
   "DELETE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete(process.env.REACT_APP_API_KEY+`/form/${arg}`);
+      await axios.delete(process.env.REACT_APP_API_KEY+`todos/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -29,7 +29,7 @@ export const __updateTodoThunk = createAsyncThunk(
   "UPDATE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY + `/form/${arg.id}`, arg);
+      await axios.patch(process.env.REACT_APP_API_KEY + `todos/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
