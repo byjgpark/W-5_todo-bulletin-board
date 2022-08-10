@@ -7,6 +7,7 @@ import {
   __getTodosThunk,
   __updateTodoThunk,
 } from "../../redux/modules/todosSlice";
+import Layout from "../style/Layout";
 
 export default function Detail() {
   const navigate = useNavigate();
@@ -49,40 +50,44 @@ export default function Detail() {
 
   return (
     <>
-      <Box2>
-        <Box3>
-          <div>id : {todo?.id}</div>
-          {!edit && <BtnBox onClick={() => navigate(-1)}>이전으로</BtnBox>}
-        </Box3>
-        <h1 style={{ marginLeft: "30px" }}>{todo?.title}</h1>
+      <Layout>
+        <Box2>
+          <Box3>
+            <div>id : {todo?.id}</div>
+            {!edit && (
+              <BtnBox onClick={() => navigate("/todolist")}>이전으로</BtnBox>
+            )}
+          </Box3>
+          <h1 style={{ marginLeft: "30px" }}>{todo?.title}</h1>
 
-        {edit ? (
-          <>
-            <Textarea value={editBody} onChange={onChangeHandler} />
-          </>
-        ) : (
-          <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
-        )}
-
-        <div style={{ float: "right" }}>
           {edit ? (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
-              저장하기
-            </BtnBox>
+            <>
+              <Textarea value={editBody} onChange={onChangeHandler} />
+            </>
           ) : (
-            <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
-              수정하기
-            </BtnBox>
+            <main style={{ marginLeft: "30px" }}>{todo?.content}</main>
           )}
-        </div>
-      </Box2>
+
+          <div style={{ float: "right" }}>
+            {edit ? (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onSubmitHandler}>
+                저장하기
+              </BtnBox>
+            ) : (
+              <BtnBox style={{ marginRight: "30px" }} onClick={onEditHandler}>
+                수정하기
+              </BtnBox>
+            )}
+          </div>
+        </Box2>
+      </Layout>
       <Comment></Comment>
     </>
   );
 }
 
 const Box2 = styled.div`
-  width: 500px;
+  width: 50%;
   height: 300px;
   border: 1px solid rgb(238, 238, 238);
 `;
