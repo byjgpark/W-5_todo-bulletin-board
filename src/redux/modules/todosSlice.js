@@ -8,7 +8,7 @@ export const __getTodosThunk = createAsyncThunk(
     try {
       // console.log("server URL" + serverURL);
       // console.log("hello world")
-      const { data } = await axios.get(serverURL+ 'todos')
+      const { data } = await axios.get(serverURL + 'todos')
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);

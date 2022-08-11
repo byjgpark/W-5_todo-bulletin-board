@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {serverURL} from "./index.js"
 
 export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get("https://tranquil-peak-85564.herokuapp.com/comments");
+      const { data } = await axios.get(serverURL + "comments");
       // console.log("getCommentsThunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
