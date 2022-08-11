@@ -5,25 +5,29 @@ import styled from "styled-components";
 
 function App() {
   const navigate = useNavigate();
+  console.log(process.env.REACT_APP_KEY);
   return (
     <div>
       <MainLYT>
         <MainTI>B반 대나무숲</MainTI>
-          <MainCon>
+        <div>{process.env.REACT_APP_KEY}</div>
+        <MainCon>
           <MainSubCon>
-              <TodoTitle>무엇을 할까요?</TodoTitle>
-              <TodoCon onClick={() => {
-                  navigate("/form");
-                }}>
-                게시글 등록하기
-              </TodoCon>
-              <TodoCon
-                onClick={() => {
-                  navigate("/todolist");
-                }}
-              >
-                게시글 목록
-              </TodoCon>
+            <TodoTitle>무엇을 할까요?</TodoTitle>
+            <TodoCon
+              onClick={() => {
+                navigate("/form");
+              }}
+            >
+              게시글 등록하기
+            </TodoCon>
+            <TodoCon
+              onClick={() => {
+                navigate("/todolist");
+              }}
+            >
+              게시글 목록
+            </TodoCon>
           </MainSubCon>
         </MainCon>
       </MainLYT>
@@ -65,7 +69,7 @@ const MainTI = styled.div`
 
 const TodoTitle = styled.div`
   font-size: 32px;
-`
+`;
 
 const TodoCon = styled.div`
   display: flex;
@@ -82,4 +86,4 @@ const TodoCon = styled.div`
   border-radius: 8px;
   cursor: pointer;
   font-size: 23px;
-`
+`;
