@@ -1,17 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./style.css";
+import {serverURL} from "../../redux/modules/index.js"
+import {useNavigate } from "react-router-dom";
 
 function Form() {
+  const navigate = useNavigate();
+
   const [post, setPost] = useState({
     nickname: "",
     title: "",
     content: "",
-  });
+  })
 
   const onSubmitHandler = (post) => {
-    axios.post(process.env.REACT_APP_API_KEY + "/form", post);
+    axios.post(serverURL + 'todos', post);
     alert("새로운 게시글이 추가 되었어요!")
+    navigate("/")
   };
 
   return (

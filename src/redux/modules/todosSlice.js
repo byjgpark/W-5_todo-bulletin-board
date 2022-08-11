@@ -6,9 +6,7 @@ export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      // console.log("server URL" + serverURL);
-      // console.log("hello world")
-      const { data } = await axios.get(serverURL + 'todos')
+      const { data } = await axios.get(serverURL+`todos`)
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -20,7 +18,7 @@ export const __deleteTodoThunk = createAsyncThunk(
   "DELETE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete(process.env.REACT_APP_API_KEY+`todos/${arg}`);
+      await axios.delete(serverURL+`todos/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -32,7 +30,7 @@ export const __updateTodoThunk = createAsyncThunk(
   "UPDATE_TODO",
   async (arg, thunkAPI) => {
     try {
-      await axios.patch(process.env.REACT_APP_API_KEY + `todos/${arg.id}`, arg);
+      await axios.patch(serverURL+`todos/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -52,12 +50,10 @@ export const todosSlice = createSlice({
   extraReducers: {
     [__getTodosThunk.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log("checking todoThunk fulfilled " + JSON.stringify(action.payload))
       state.todos = action.payload;
     },
     [__getTodosThunk.rejected]: (state, action) => {
       state.isLoading = false;
-      console.log("checking todoThunk reject " + JSON.stringify(action.payload))
       state.error = action.payload;
     },
     [__getTodosThunk.pending]: (state) => {

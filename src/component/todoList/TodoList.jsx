@@ -9,9 +9,6 @@ export default function TodoList() {
 
   const { todos } = useSelector((state) => state.todos);
 
-  if(todos.length !==0)
-  {console.log("checking todos " + JSON.stringify(todos))}
-
   useEffect(() => {
     dispatch(__getTodosThunk());
   }, [dispatch]);

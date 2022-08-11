@@ -6,8 +6,7 @@ export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${serverURL}comments`);
-      // console.log("getCommentsThunk" + JSON.stringify(data))
+      const { data } = await axios.get(serverURL+'comments');
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -19,7 +18,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   "GET_COMMENT_BY_TODO_ID",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.get(`${serverURL}comments?todoId=${arg}`);
+      const { data } = await axios.get(serverURL+`comments?todoId=${arg}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -31,7 +30,7 @@ export const __deleteComment = createAsyncThunk(
   "DELETE_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      await axios.delete(`${serverURL}comments/${arg}`);
+      await axios.delete(serverURL+`comments/${arg}`);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -44,7 +43,7 @@ export const __updateComment = createAsyncThunk(
   async (arg, thunkAPI) => {
     console.log(JSON.stringify(arg));
     try {
-      axios.patch(`${serverURL}comments/${arg.id}`, arg);
+      axios.patch(serverURL+`comments/${arg.id}`, arg);
       return thunkAPI.fulfillWithValue(arg);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -56,7 +55,7 @@ export const __addComment = createAsyncThunk(
   "ADD_COMMENT",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${serverURL}comments`, arg);
+      const { data } = await axios.post(serverURL+`comments`, arg);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -92,7 +91,6 @@ export const commentsSlice = createSlice({
     },
     [__getCommentsThunk.fulfilled]: (state, action) => {
       state.comments.isLoading = false;
-      // console.log("this is comment thunk" + JSON.stringify(state.comments.data))
       state.comments.data = action.payload;
     },
     [__getCommentsThunk.rejected]: (state, action) => {
