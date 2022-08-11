@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import {serverURL} from "./index.js"
 
 export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get("https://tranquil-peak-85564.herokuapp.com/todos");
-      console.log("checking thunk" + JSON.stringify(data))
+      // console.log("server URL" + serverURL);
+      // console.log("hello world")
+      const { data } = await axios.get(serverURL+ 'todos')
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);

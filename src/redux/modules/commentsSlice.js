@@ -18,8 +18,7 @@ export const __getCommnetsByTodoId = createAsyncThunk(
   "GET_COMMENT_BY_TODO_ID",
   async (arg, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+`comments?todoId=${arg}`
-      );
+      const { data } = await axios.get(`https://tranquil-peak-85564.herokuapp.com/comments?todoId=${arg}`);
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
