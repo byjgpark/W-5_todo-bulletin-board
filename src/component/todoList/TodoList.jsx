@@ -9,6 +9,9 @@ export default function TodoList() {
 
   const { todos } = useSelector((state) => state.todos);
 
+  if(todos.length !==0)
+  {console.log("checking todos " + JSON.stringify(todos))}
+
   useEffect(() => {
     dispatch(__getTodosThunk());
   }, [dispatch]);
@@ -17,7 +20,7 @@ export default function TodoList() {
     <>
       <div className="layout-list">
         <div className="nameoftitle">글 목록</div>
-        {todos.map((todo) => {
+        {todos.length !==0 && todos.map((todo) => {
           return <Todo todo={todo} key={todo.id} />;
         })}
       </div>
