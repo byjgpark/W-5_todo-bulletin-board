@@ -6,6 +6,7 @@ export const __getTodosThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(process.env.REACT_APP_API_KEY+'todos');
+      console.log("checking thunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
       return thunkAPI.rejectWithValue(e.code);
@@ -49,10 +50,12 @@ export const todosSlice = createSlice({
   extraReducers: {
     [__getTodosThunk.fulfilled]: (state, action) => {
       state.isLoading = false;
+      console.log("checking todoThunk fulfilled " + JSON.stringify(action.payload))
       state.todos = action.payload;
     },
     [__getTodosThunk.rejected]: (state, action) => {
       state.isLoading = false;
+      console.log("checking todoThunk reject " + JSON.stringify(action.payload))
       state.error = action.payload;
     },
     [__getTodosThunk.pending]: (state) => {
