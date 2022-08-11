@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 function App() {
   const navigate = useNavigate();
 
+  console.log("checking " + process.env.REACT_APP_API_KEY)
+
   return (
     <div className="main-group">
       <div className="main-title">
