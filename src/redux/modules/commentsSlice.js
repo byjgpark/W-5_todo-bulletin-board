@@ -5,7 +5,7 @@ export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+"comments");
+      const { data } = await axios.get("https://tranquil-peak-85564.herokuapp.com/comments");
       // console.log("getCommentsThunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
