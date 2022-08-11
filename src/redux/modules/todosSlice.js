@@ -5,7 +5,7 @@ export const __getTodosThunk = createAsyncThunk(
   "GET_TODOS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(process.env.REACT_APP_API_KEY+ "todos");
+      const { data } = await axios.get("https://tranquil-peak-85564.herokuapp.com/todos");
       console.log("checking thunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
