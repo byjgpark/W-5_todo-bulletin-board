@@ -6,7 +6,7 @@ export const __getCommentsThunk = createAsyncThunk(
   "GET_COMMENTS",
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(serverURL + "comments");
+      const { data } = await axios.get(`${serverURL}comments`);
       // console.log("getCommentsThunk" + JSON.stringify(data))
       return thunkAPI.fulfillWithValue(data);
     } catch (e) {
